@@ -84,7 +84,7 @@ const MEMBERS = [
   { n: 'Seth Blanchard', as: 'Bill Kreutzmann', r: 'Drums', p: 'seth', pics: ['drums-sweater', 'seth-hat', 'drum-duo'],
     b: 'Seth plays the Bill Kreutzmann side of the drum riser: the steady, swinging groove the whole band leans on, from the tightest shuffle to the longest jam.' },
   { n: 'Clay Councilman', as: 'Mickey Hart', r: 'Drums · Percussion · Vocals', p: 'clay', pics: ['clay-kit', 'two-drummers', 'seth-outdoor'],
-    b: 'Clay takes the Mickey Hart role: second kit, percussion and vocals. Together with Seth he brings back the two-drummer sound that powered the Dead\'s live shows, right through Drums and Space.' }
+    b: 'Clay takes the Mickey Hart role: second kit, percussion and vocals. Together with Seth he brings back the two-drummer sound that powered the Dead\'s live shows, right through Drums and Space. As a bonus, Clay also sings, adding a fourth voice to the harmonies.' }
 ];
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const mem = $('#members'), md = $('#md');
