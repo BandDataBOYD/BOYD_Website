@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bring Out Yer Dead</title>
+<meta name="description" content="Bring Out Yer Dead — North Carolina's Grateful Dead tribute band. Formed in Raleigh in 2019, recreating the Dead's live shows from the '60s through the '90s.">
+<meta property="og:title" content="Bring Out Yer Dead | Grateful Dead Tribute Band">
+<meta property="og:description" content="NC's own Grateful Dead tribute. Tour dates, setlists, video and booking.">
+<meta property="og:image" content="img/live-blue.jpg">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..700,100,1&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a class="brand" href="#top"><img src="img/icon.png" alt="">Bring Out Yer Dead</a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="links"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="links" id="links">
+    <a href="#shows">Shows</a><a href="#band">The band</a><a href="#setlists">Setlists</a><a href="#watch">Watch</a><a href="#booking">Booking</a>
+    <a class="btn red" href="#join">Join the list</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="photo" role="img" aria-label="Bring Out Yer Dead on stage under blue lights with a psychedelic projection behind them"></div>
+  <canvas id="oil" aria-hidden="true"></canvas>
+  <div>
+    <h1><img class="logo" src="img/logo.png" alt="Bring Out Yer Dead — Grateful Dead Tribute"></h1>
+    <p>North Carolina's Grateful Dead tribute, playing the music the way it was meant to be heard: live, loose, and long.</p>
+    <div class="cta"><a class="btn red" href="#shows">See upcoming shows</a><a class="btn" href="#booking">Book the band</a></div>
+  </div>
+  <button class="oil" id="oilBtn" type="button">Change the light show</button>
+</header>
+
+<div class="rooms" aria-label="Venues we've played">
+  <div class="track" id="rooms"></div>
+</div>
+
+<section class="band shows" id="shows">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><h2>Come see a show</h2><p class="lede">Dates update automatically from Bandsintown. Follow us there and you'll get a heads-up when we're playing near you.</p></div>
+    </div>
+    <div class="bit-wrap reveal" id="bit">
+      <a class="bit-widget-initializer" data-artist-name="Bring Out Yer Dead" data-display-local-dates="false" data-display-past-dates="false" data-auto-style="false" data-text-color="#F3EAD8" data-link-color="#D8303A" data-background-color="rgba(0,0,0,0)" data-display-limit="15" data-display-start-time="true" data-link-text-color="#FFFFFF" data-display-lineup="false" data-display-play-my-city="true" data-separator-color="#2E2740" data-font="Inter"></a>
+      <div class="fallback" id="bitFallback">
+        <p>We also post every show on our Facebook page, usually with flyers and ticket links.</p>
+        <a class="btn" href="https://www.facebook.com/BringOutYerDeadNC/events">Shows on Facebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band about" id="band">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <h2>Every era, every detail</h2>
+        <p class="lede">Bring Out Yer Dead formed in Raleigh in 2019 with one goal: recreate the feel of a real Grateful Dead show, not just the songs.</p>
+        <p>That means sweating the details — the instruments, the rigs, the stage layout, the two-drummer engine room — and pulling setlists from the whole catalog, from the psychedelic '60s through the '70s, '80s and beyond. Some nights it's cowboy songs and roadhouse blues; some nights the jam goes where it wants to go.</p>
+        <p>Whether you've been on the bus since the Fillmore days or you're catching your first "Scarlet&nbsp;›&nbsp;Fire," you're part of the show.</p>
+        <div class="stats"><div><b>2019</b><span>Formed in Raleigh, NC</span></div><div><b>6</b><span>Players on stage</span></div><div><b>2</b><span>Drummers, like it should be</span></div></div>
+      </div>
+      <figure class="reveal"><img src="img/band.jpg" alt="The six members of Bring Out Yer Dead standing in front of a white barn wall with a LOVE sign" loading="lazy" width="1600" height="1200"></figure>
+    </div>
+    <div class="members" id="members"></div>
+  </div>
+</section>
+
+<section class="band sets" id="setlists">
+  <div class="wrap">
+    <div class="head reveal"><div><h2>From the set card</h2><p class="lede">No two nights are the same. Pick a show and see what we played.</p></div></div>
+    <div class="grid reveal">
+      <div class="picker" id="picker" role="tablist" aria-label="Recent shows"></div>
+      <div class="card" id="card" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band watch" id="watch">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><h2>Watch &amp; listen</h2><p class="lede">Full songs and jams from the stage, straight from our YouTube channel.</p></div>
+      <a class="btn" href="https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q?sub_confirmation=1">Subscribe on YouTube</a>
+    </div>
+    <a class="frame reveal" id="video" href="https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q" data-list="UUQ5zhto_H1IK1-C3n1uaO1Q" aria-label="Play our latest videos">
+      <span class="play"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="label">Latest from the stage</span>
+    </a>
+  </div>
+</section>
+
+<section class="band join" id="join">
+  <div class="wrap">
+    <h2 class="reveal">Get on the bus</h2>
+    <p class="lede reveal">Join the fan club list for show announcements, band news, and the occasional bit of Dead history. No spam, ever.</p>
+    <form class="sub reveal" name="mailing-list" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="mailing-list">
+      <p hidden><label>Leave blank <input name="bot-field"></label></p>
+      <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address" autocomplete="email">
+      <button class="btn red" type="submit">Subscribe</button>
+      <label class="consent"><input type="checkbox" name="consent" required> Yes, sign me up for the mailing list</label>
+    </form>
+    <div class="msg" role="status"></div>
+  </div>
+</section>
+
+<section class="band book" id="booking">
+  <div class="wrap grid">
+    <div class="reveal">
+      <h2>Booking</h2>
+      <p class="lede">Theaters, clubs, breweries, festivals and private events. We bring a full production-ready show and a crowd that shows up.</p>
+      <div class="agent">
+        <img src="img/john-moyer-bookings.png" alt="John Moyer Bookings logo" width="150" height="132">
+        <div>Booking and management through <b>John Moyer Bookings</b></div>
+        <a class="mail" href="mailto:johnmoyerbookings@gmail.com?subject=Booking%20inquiry%20-%20Bring%20Out%20Yer%20Dead">johnmoyerbookings@gmail.com</a>
+        <a class="btn red" href="mailto:johnmoyerbookings@gmail.com?subject=Booking%20inquiry%20-%20Bring%20Out%20Yer%20Dead">Email John</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <h3 style="margin-bottom:16px">Drop us a line</h3>
+      <form class="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><label>Leave blank <input name="bot-field"></label></p>
+        <label>First name<input name="first" required autocomplete="given-name"></label>
+        <label>Last name<input name="last" required autocomplete="family-name"></label>
+        <label class="full">Email<input type="email" name="email" required autocomplete="email"></label>
+        <label class="full">Message<textarea name="message" rows="5" placeholder="Questions, shout-outs, song requests…"></textarea></label>
+        <div class="full"><button class="btn red" type="submit">Send message</button><div class="msg" role="status"></div></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="social" data-social></div>
+    <div>© <span id="yr">2026</span> Bring Out Yer Dead &amp; K14 Productions LLC</div>
+  </div>
+</footer>
+
+
+<script src="js/site.js"></script>
+<script charset="utf-8" src="https://widget.bandsintown.com/main.min.js" async></script>
+</body>
+</html>

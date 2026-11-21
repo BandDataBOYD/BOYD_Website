@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Press Kit · Bring Out Yer Dead</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="../img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..700,100,1&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.ehero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(48px,7vw,96px) max(5vw,16px)}
+.ehero::before{content:"";position:absolute;inset:0;z-index:-2;background:url(../img/stage.jpg) center/cover}
+.ehero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,10,18,.96) 30%,rgba(12,10,18,.55))}
+.ehero .wrap{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.ehero img{width:100%;max-width:260px}
+.ehero h1{font-size:clamp(36px,5vw,52px)}
+.tag{display:inline-block;font-size:13px;color:var(--gold);border:1px solid rgba(232,180,74,.4);border-radius:999px;padding:4px 12px;margin-bottom:14px}
+.jump{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
+.jump a{font-size:14px;text-decoration:none;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line)}
+.jump a:hover{border-color:var(--red)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:28px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.facts b{display:block;font:600 22px Fraunces,serif;font-variation-settings:"SOFT" 100;color:var(--gold)}
+.facts span{font-size:14px;color:var(--mute)}
+.two{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:28px}
+.photos figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.photos img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.photos figcaption{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;font-size:14px;color:var(--mute)}
+.photos a{color:var(--ink);font-weight:600;white-space:nowrap}
+.plot{background:#fff;border-radius:14px;padding:10px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{color:var(--mute);font-weight:500;font-size:13px}
+td:first-child{font-variant-numeric:tabular-nums;color:var(--gold);width:3.5em}
+.note{font-size:14px;color:var(--mute);margin-top:14px}
+.rlist{columns:2 220px;padding:0;list-style:none;margin:20px 0 0}
+.rlist li{padding:8px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+@media(max-width:760px){.ehero .wrap,.two{grid-template-columns:minmax(0,1fr)}.ehero img{max-width:180px}}
+</style>
+</head>
+<body>
+
+<header class="ehero">
+  <div class="wrap">
+    <img src="../img/logo.png" alt="Bring Out Yer Dead — Grateful Dead Tribute">
+    <div>
+      <span class="tag">Electronic press kit</span>
+      <h1>Bring Out Yer Dead</h1>
+      <p class="lede">North Carolina's Grateful Dead tribute. Six players, two drummers, the whole catalog.</p>
+      <div class="jump"><a href="#bio">Bio</a><a href="#photos">Photos</a><a href="#tech">Stage plot &amp; inputs</a><a href="#venues">Venues</a><a href="#contact">Booking</a></div>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="bio">
+  <div class="wrap two">
+    <div>
+      <h2>Short bio</h2>
+      <p class="lede" id="bioText">Formed in Raleigh, NC, in 2019, Bring Out Yer Dead is a premier Grateful Dead tribute band dedicated to authentically recreating the magic of the Dead's legendary live performances. Known for their meticulous attention to detail and dynamic musicianship, the band delivers immersive shows that span the Grateful Dead's extensive catalog—from their psychedelic '60s roots to their timeless jams of later decades. More than just a tribute band, Bring Out Yer Dead creates a communal celebration of music and memory, inviting fans old and new to relive the spirit of one of rock's most iconic bands.</p>
+      <button class="btn" type="button" id="copyBio">Copy bio</button> <span class="msg" id="copyMsg" role="status"></span>
+    </div>
+    <div>
+      <h3>Lineup</h3>
+      <table><tbody>
+        <tr><td>GTR</td><td>Kirk Farmer — guitar, vocals</td></tr>
+        <tr><td>GTR</td><td>Jonas Mac — guitar, vocals</td></tr>
+        <tr><td>KEYS</td><td>Chris "CJ" Johnson — keyboards, vocals</td></tr>
+        <tr><td>BASS</td><td>Cris Perez — bass</td></tr>
+        <tr><td>DRUMS</td><td>Clay Councilman — drums, vocals</td></tr>
+        <tr><td>DRUMS</td><td>Seth Blanchard — drums</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <div class="wrap facts">
+    <div><b>2019</b><span>Formed in Raleigh, NC</span></div>
+    <div><b>'60s–'90s</b><span>Setlists from the full catalog</span></div>
+    <div><b>90–300 min</b><span>Single set to a full two-set night</span></div>
+    <div><b>32 inputs</b><span>Plot and input list below</span></div>
+  </div>
+</section>
+
+<section class="band sets" id="photos">
+  <div class="wrap">
+    <h2>Press photos</h2>
+    <p class="lede">High-resolution images for posters, listings and press. Credit: Bring Out Yer Dead.</p>
+    <div class="photos">
+      <figure><img src="../img/band.jpg" alt="Band portrait in front of a LOVE sign" loading="lazy"><figcaption>Band portrait<a href="../img/band.jpg" download>Download</a></figcaption></figure>
+      <figure><img src="../img/stage.jpg" alt="Full band on stage" loading="lazy"><figcaption>Full stage<a href="../img/stage.jpg" download>Download</a></figcaption></figure>
+      <figure><img src="../img/live-blue.jpg" alt="Live crowd under blue lights" loading="lazy"><figcaption>Live, with crowd<a href="../img/live-blue.jpg" download>Download</a></figcaption></figure>
+      <figure><img src="../img/logo.png" alt="Band logo" loading="lazy" style="object-fit:contain;background:#000;padding:16px"><figcaption>Logo (PNG, transparent)<a href="../img/logo.png" download>Download</a></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="tech">
+  <div class="wrap two">
+    <div>
+      <h2>Stage plot</h2>
+      <p class="lede">Two full drum kits upstage, guitars and bass across the front, keys stage left with Leslie.</p>
+      <a href="../img/stage-plot.jpg" class="plot" style="display:block"><img src="../img/stage-plot.jpg" alt="Stage plot showing two drum kits, two guitar amps, bass DI, keyboard rig with Leslie, and vocal mic positions" loading="lazy"></a>
+      <p class="note"><a href="../img/stage-plot.jpg" download>Download stage plot</a></p>
+    </div>
+    <div>
+      <h3>Input list</h3>
+      <table class="stack">
+        <thead><tr><th>Ch</th><th>Source</th></tr></thead>
+        <tbody id="inputs"></tbody>
+      </table>
+      <p class="note">Monitors: 5 wireless IEMs and 1 wired IEM. Channels 3–8 and 12–17 are unassigned on the current plot.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band sets" id="venues">
+  <div class="wrap">
+    <h2>Recent rooms</h2>
+    <ul class="rlist">
+      <li>Lincoln Theatre — Raleigh, NC</li><li>The Jefferson Theater — Charlottesville, VA</li><li>Cat's Cradle — Carrboro, NC</li><li>Lenovo Center South Plaza — Raleigh, NC</li><li>Parkway Brewing — Salem, VA</li><li>Bowstring Pizza &amp; Brewyard — Raleigh, NC</li><li>Bond Brothers Eastside — Cary, NC</li>
+    </ul>
+    <p class="note">Recent setlists at <a href="https://www.setlist.fm/setlists/bring-out-yer-dead-73efc609.html">setlist.fm</a> · Video on <a href="https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q">YouTube</a> · Upcoming dates on <a href="https://www.facebook.com/BringOutYerDeadNC/events">Facebook</a></p>
+  </div>
+</section>
+
+<section class="band book" id="contact">
+  <div class="wrap grid">
+    <div><h2>Booking &amp; management</h2><p class="lede">All booking, holds and advance through John Moyer Bookings.</p><div class="social" data-social style="margin-top:20px"></div></div>
+    <div class="agent">
+      <img src="../img/john-moyer-bookings.png" alt="John Moyer Bookings logo" width="150" height="132">
+      <a class="mail" href="mailto:johnmoyerbookings@gmail.com?subject=Booking%20inquiry%20-%20Bring%20Out%20Yer%20Dead">johnmoyerbookings@gmail.com</a>
+      <a class="btn red" href="mailto:johnmoyerbookings@gmail.com?subject=Booking%20inquiry%20-%20Bring%20Out%20Yer%20Dead">Email John</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><a href="../" style="text-decoration:none">← bringoutyerdead.net</a><div>© <span id="yr">2026</span> Bring Out Yer Dead &amp; K14 Productions LLC</div></div></footer>
+
+<script src="../js/site.js"></script>
+<script>
+{
+const INPUTS = [[1,'SR Kick'],[2,'SR Snare'],[9,'SR Pad'],[10,'SL Kick'],[11,'SL Snare'],[18,'SL Pad'],[19,'Beast 1'],[20,'Beast 2'],[21,'Beast 3'],[22,'Bass DI'],[23,'SR Guitar'],[24,'SL Guitar'],[25,'Leslie Hi'],[26,'Leslie Lo'],[27,'Key L'],[28,'Key R'],[29,'SR Guitar vox'],[30,'SL Guitar vox'],[31,'Key vox'],[32,'SL Drummer vox']];
+document.getElementById('inputs').innerHTML = INPUTS.map(([c,s]) => `<tr><td>${c}</td><td>${s}</td></tr>`).join('');
+const b = document.getElementById('copyBio'), m = document.getElementById('copyMsg');
+b.addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(document.getElementById('bioText').textContent); m.textContent = 'Copied.'; }
+  catch { m.textContent = 'Select the text above to copy it.'; }
+});
+}
+</script>
+</body>
+</html>
