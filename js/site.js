@@ -78,12 +78,12 @@ const MEMBERS = [
   { n: 'Jonas Mac', as: 'Bob Weir', r: 'Rhythm Guitar · Vocals', p: 'jonas', pics: ['jonas-sing', 'jonas-sg', 'jonas-bw'],
     b: 'Jonas plays the Bob Weir role: the rhythm guitar, the cowboy songs and the rockers. Weir\'s unconventional voicings are what make the Dead\'s two-guitar conversation work, and Jonas brings that same push and pull to every jam.' },
   { n: 'Chris "CJ" Johnson', as: 'The Keyboard Chair', r: 'Keyboards · Vocals', p: 'cj', pics: ['cj-sing', 'cj-floral', 'cj-keys'],
-    b: 'CJ covers the Dead\'s keyboard history in one seat: Keith Godchaux\'s piano, Brent Mydland\'s organ and vocals, and the Bruce Hornsby years. Keep an eye on the stuffed animals riding along on his keyboards.' },
+    b: 'CJ covers the Dead\'s keyboard history in one seat: Keith Godchaux\'s piano, Brent Mydland\'s organ and vocals, and the Bruce Hornsby years. He also travels with a parrot, two sloths and a tie-dye bear, who ride on his keyboards every night and are the only members of the band who have never missed a cue.' },
   { n: 'Cris Perez', as: 'Phil Lesh', r: 'Bass', p: 'cris', pics: ['cris-green', 'cris-white', 'bass-lights'],
     b: 'Cris holds down the Phil Lesh role, playing bass the way Phil did: as a lead voice instead of just the bottom end. Big, melodic lines that steer the jams wherever they want to go.' },
-  { n: 'Seth Blanchard', as: 'Bill Kreutzmann', r: 'Drums', p: 'seth', pics: ['drums-sweater', 'drum-duo', 'two-drummers'],
+  { n: 'Seth Blanchard', as: 'Bill Kreutzmann', r: 'Drums', p: 'seth', pics: ['drums-sweater', 'seth-outdoor', 'drum-duo'],
     b: 'Seth plays the Bill Kreutzmann side of the drum riser: the steady, swinging groove the whole band leans on, from the tightest shuffle to the longest jam.' },
-  { n: 'Clay Councilman', as: 'Mickey Hart', r: 'Drums · Percussion · Vocals', p: 'clay', pics: ['drummer-smile', 'two-drummers', 'drum-duo'],
+  { n: 'Clay Councilman', as: 'Mickey Hart', r: 'Drums · Percussion · Vocals', p: 'clay', pics: ['clay-kit', 'two-drummers'],
     b: 'Clay takes the Mickey Hart role: second kit, percussion and vocals. Together with Seth he brings back the two-drummer sound that powered the Dead\'s live shows, right through Drums and Space.' }
 ];
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
