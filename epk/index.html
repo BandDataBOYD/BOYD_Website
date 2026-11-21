@@ -38,6 +38,23 @@ td:first-child{font-variant-numeric:tabular-nums;color:var(--gold);width:3.5em}
 .note{font-size:14px;color:var(--mute);margin-top:14px}
 .rlist{columns:2 220px;padding:0;list-style:none;margin:20px 0 0}
 .rlist li{padding:8px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.reach{background:linear-gradient(120deg,#1b2a52,#2a1620);border-block:1px solid var(--line);padding:clamp(32px,5vw,56px) max(5vw,16px)}
+.reach .wrap{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.rnum b{display:block;font:600 clamp(44px,6vw,68px)/1 Fraunces,serif;font-variation-settings:"SOFT" 100;color:var(--gold)}
+.rnum span{display:block;margin-top:6px;color:var(--ink);font-size:15px}
+.rtxt h2{font-size:clamp(24px,3vw,32px)}.rtxt p{color:var(--mute);margin:8px 0 14px}
+.vframe{position:relative;display:grid;place-items:center;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000 url(../img/gallery/banner-wide.jpg) center/cover;border:1px solid var(--line);margin-top:24px;text-decoration:none}
+.vframe::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.75))}
+.vplay{position:relative;width:88px;height:88px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 0 0 10px rgba(216,48,58,.25)}
+.vlabel{position:absolute;left:24px;bottom:20px;font:600 20px Fraunces,serif;font-variation-settings:"SOFT" 100}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mon{display:flex;gap:22px;align-items:center;background:#16263f;border:1px solid var(--blue);border-radius:18px;padding:clamp(20px,3vw,32px);margin-bottom:clamp(32px,5vw,56px)}
+.mon svg{width:56px;height:56px;flex:none;color:#8fb0ff}
+.mon h3{font-size:clamp(24px,3vw,32px)}.mon p{margin:8px 0 0;font-size:18px;max-width:70ch}
+tr.res td{color:var(--mute);font-style:italic}tr.res td:first-child{color:var(--gold);font-style:normal;white-space:nowrap}
+td:first-child{width:4.5em}
+@media(max-width:860px){.reach .wrap{grid-template-columns:1fr 1fr}.rtxt{grid-column:1/-1}}
+@media(max-width:600px){.mon{flex-direction:column;align-items:flex-start}}
 @media(max-width:760px){.ehero .wrap,.two{grid-template-columns:minmax(0,1fr)}.ehero img{max-width:180px}}
 </style>
 </head>
@@ -50,10 +67,22 @@ td:first-child{font-variant-numeric:tabular-nums;color:var(--gold);width:3.5em}
       <span class="tag">Electronic Press Kit</span>
       <h1>Bring Out Yer Dead</h1>
       <p class="lede">Grateful Dead tribute. Six players, two drummers, the whole catalog.</p>
-      <div class="jump"><a href="#bio">Bio</a><a href="#photos">Photos</a><a href="#tech">Stage Plot &amp; Inputs</a><a href="#contact">Booking</a></div>
+      <div class="jump"><a href="#reach">Social Reach</a><a href="#bio">Bio</a><a href="#video">Video</a><a href="#photos">Photos</a><a href="#tech">Stage Plot &amp; Tech</a><a href="#contact">Booking</a></div>
     </div>
   </div>
 </header>
+
+<section class="reach" id="reach">
+  <div class="wrap">
+    <div class="rnum"><b>20,000+</b><span>Facebook followers</span></div>
+    <div class="rnum"><b>25,000+</b><span>Followers across all platforms</span></div>
+    <div class="rtxt">
+      <h2>A Following That Shows Up</h2>
+      <p>We promote every show to an engaged audience on Facebook, Instagram, TikTok and YouTube, plus a growing fan club mailing list.</p>
+      <div class="social" data-social></div>
+    </div>
+  </div>
+</section>
 
 <section class="band" id="bio">
   <div class="wrap two">
@@ -82,21 +111,35 @@ td:first-child{font-variant-numeric:tabular-nums;color:var(--gold);width:3.5em}
   </div>
 </section>
 
+<section class="band" id="video">
+  <div class="wrap">
+    <h2>Live Video</h2>
+    <p class="lede">Full songs and jams, straight from the stage. More on our <a href="https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q" target="_blank" rel="noopener">YouTube channel</a>.</p>
+    <a class="vframe" id="evid" href="https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q" target="_blank" rel="noopener" data-list="UUQ5zhto_H1IK1-C3n1uaO1Q" aria-label="Play live videos">
+      <span class="vplay"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="vlabel">Watch Bring Out Yer Dead Live</span>
+    </a>
+  </div>
+</section>
+
 <section class="band sets" id="photos">
   <div class="wrap">
     <h2>Press Photos</h2>
-    <p class="lede">High-resolution images for posters, listings and press. Credit: Bring Out Yer Dead.</p>
-    <div class="photos">
-      <figure><img src="../img/marquee.jpg" alt="Band under a theater marquee" loading="lazy"><figcaption>Theater marquee<a href="../img/marquee.jpg" download>Download</a></figcaption></figure>
-      <figure><img src="../img/band.jpg" alt="Band portrait in front of a LOVE sign" loading="lazy"><figcaption>Band portrait<a href="../img/band.jpg" download>Download</a></figcaption></figure>
-      <figure><img src="../img/stage.jpg" alt="Full band on stage" loading="lazy"><figcaption>Full stage<a href="../img/stage.jpg" download>Download</a></figcaption></figure>
-      <figure><img src="../img/live-blue.jpg" alt="Live crowd under blue lights" loading="lazy"><figcaption>Live, with crowd<a href="../img/live-blue.jpg" download>Download</a></figcaption></figure>
-      <figure><img src="../img/logo.png" alt="Band logo" loading="lazy" style="object-fit:contain;background:#000;padding:16px"><figcaption>Logo (PNG, transparent)<a href="../img/logo.png" download>Download</a></figcaption></figure>
-    </div>
+    <p class="lede">High-resolution images for posters, listings and press. Tap Download for the full-size file. Credit: Bring Out Yer Dead.</p>
+    <div class="photos" id="pressPhotos"></div>
   </div>
 </section>
 
 <section class="band" id="tech">
+  <div class="wrap">
+    <div class="mon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" fill="currentColor"/></svg>
+      <div>
+        <h3>We Bring Our Own Monitor Rig</h3>
+        <p>All six members are on in-ear monitors. We carry and mix our own monitors on stage, so there are no wedges and no monitor mixes for your engineer. We simply send a feed to front of house.</p>
+      </div>
+    </div>
+  </div>
   <div class="wrap two">
     <div>
       <h2>Stage Plot</h2>
@@ -110,7 +153,7 @@ td:first-child{font-variant-numeric:tabular-nums;color:var(--gold);width:3.5em}
         <thead><tr><th>Ch</th><th>Source</th></tr></thead>
         <tbody id="inputs"></tbody>
       </table>
-      <p class="note">Monitors: 5 wireless IEMs and 1 wired IEM. Channels 3–8 and 12–17 are unassigned on the current plot.</p>
+
     </div>
   </div>
 </section>
@@ -131,8 +174,12 @@ td:first-child{font-variant-numeric:tabular-nums;color:var(--gold);width:3.5em}
 <script src="../js/site.js"></script>
 <script>
 {
-const INPUTS = [[1,'SR Kick'],[2,'SR Snare'],[9,'SR Pad'],[10,'SL Kick'],[11,'SL Snare'],[18,'SL Pad'],[19,'Beast 1'],[20,'Beast 2'],[21,'Beast 3'],[22,'Bass DI'],[23,'SR Guitar'],[24,'SL Guitar'],[25,'Leslie Hi'],[26,'Leslie Lo'],[27,'Key L'],[28,'Key R'],[29,'SR Guitar vox'],[30,'SL Guitar vox'],[31,'Key vox'],[32,'SL Drummer vox']];
-document.getElementById('inputs').innerHTML = INPUTS.map(([c,s]) => `<tr><td>${c}</td><td>${s}</td></tr>`).join('');
+const INPUTS = [[1,'SR Kick'],[2,'SR Snare'],['3–8','Reserved: SR drum mics (house engineer\'s discretion)',1],[9,'SR Pad'],[10,'SL Kick'],[11,'SL Snare'],['12–17','Reserved: SL drum mics (house engineer\'s discretion)',1],[18,'SL Pad'],[19,'Beast 1'],[20,'Beast 2'],[21,'Beast 3'],[22,'Bass DI'],[23,'SR Guitar'],[24,'SL Guitar'],[25,'Leslie Hi'],[26,'Leslie Lo'],[27,'Key L'],[28,'Key R'],[29,'SR Guitar vox'],[30,'SL Guitar vox'],[31,'Key vox'],[32,'SL Drummer vox']];
+document.getElementById('inputs').innerHTML = INPUTS.map(([c,s,r]) => `<tr${r ? ' class="res"' : ''}><td>${c}</td><td>${s}</td></tr>`).join('');
+const PP = [['banner-wide','Full band under the banner'],['marquee','Theater marquee'],['psych-room','Full stage with projections'],['theater-wide','Theater stage, wide'],['crowd-wide','Packed room'],['foh-crowd','Crowd from the sound booth'],['balcony-crowd','Theater from the balcony'],['hands-logo','Fans at the front'],['kirk-bw','Kirk Farmer'],['jonas-smile','Jonas Mac'],['cj-floral','CJ Johnson'],['cris-green','Cris Perez'],['drums-sweater','Seth Blanchard'],['drummer-smile','Clay Councilman'],['drum-duo','Both drummers']];
+document.getElementById('pressPhotos').innerHTML = PP.map(([f,t]) => `<figure><img src="../img/gallery/${f}-sm.jpg" alt="${t}" loading="lazy"><figcaption>${t}<a href="../img/gallery/${f}.jpg" download>Download</a></figcaption></figure>`).join('') + `<figure><img src="../img/logo.png" alt="Band logo" loading="lazy" style="object-fit:contain;background:#000;padding:16px"><figcaption>Logo (PNG, transparent)<a href="../img/logo.png" download>Download</a></figcaption></figure>`;
+const ev = document.getElementById('evid');
+ev.addEventListener('click', e => { if (window.self !== window.top) return; e.preventDefault(); ev.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=${ev.dataset.list}&autoplay=1" title="Bring Out Yer Dead live video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; });
 const b = document.getElementById('copyBio'), m = document.getElementById('copyMsg');
 b.addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(document.getElementById('bioText').textContent); m.textContent = 'Copied.'; }
