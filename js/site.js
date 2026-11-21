@@ -73,13 +73,39 @@ const ICON = {
   drums: '<ellipse cx="12" cy="9" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 9v7c0 1.7 3.6 3 8 3s8-1.3 8-3V9M3 2l7 6M21 2l-7 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'
 };
 const MEMBERS = [
-  ['Kirk Farmer', 'Guitar · Vocals', 'guitar', 'kirk'], ['Jonas Mac', 'Guitar · Vocals', 'guitar', 'jonas'],
-  ['Chris "CJ" Johnson', 'Keyboards · Vocals', 'keys', 'cj'], ['Cris Perez', 'Bass', 'bass', 'cris'],
-  ['Clay Councilman', 'Drums · Vocals', 'drums', 'clay'], ['Seth Blanchard', 'Drums', 'drums', 'seth']
+  { n: 'Kirk Farmer', as: 'Jerry Garcia', r: 'Lead Guitar · Vocals', p: 'kirk', pics: ['kirk-sing', 'kirk-tiger', 'kirk-smile'],
+    b: 'Kirk takes the Jerry chair: lead guitar and the Garcia vocals. He plays a replica of Jerry\'s Tiger guitar through a Garcia-style rig, going after the touch and tone that made those leads sing.' },
+  { n: 'Jonas Mac', as: 'Bob Weir', r: 'Rhythm Guitar · Vocals', p: 'jonas', pics: ['jonas-sing', 'jonas-sg', 'jonas-bw'],
+    b: 'Jonas plays the Bob Weir role: the rhythm guitar, the cowboy songs and the rockers. Weir\'s unconventional voicings are what make the Dead\'s two-guitar conversation work, and Jonas brings that same push and pull to every jam.' },
+  { n: 'Chris "CJ" Johnson', as: 'The Keyboard Chair', r: 'Keyboards · Vocals', p: 'cj', pics: ['cj-sing', 'cj-floral', 'cj-keys'],
+    b: 'CJ covers the Dead\'s keyboard history in one seat: Keith Godchaux\'s piano, Brent Mydland\'s organ and vocals, and the Bruce Hornsby years. Keep an eye on the stuffed animals riding along on his keyboards.' },
+  { n: 'Cris Perez', as: 'Phil Lesh', r: 'Bass', p: 'cris', pics: ['cris-green', 'cris-white', 'bass-lights'],
+    b: 'Cris holds down the Phil Lesh role, playing bass the way Phil did: as a lead voice instead of just the bottom end. Big, melodic lines that steer the jams wherever they want to go.' },
+  { n: 'Seth Blanchard', as: 'Bill Kreutzmann', r: 'Drums', p: 'seth', pics: ['drums-sweater', 'drum-duo', 'two-drummers'],
+    b: 'Seth plays the Bill Kreutzmann side of the drum riser: the steady, swinging groove the whole band leans on, from the tightest shuffle to the longest jam.' },
+  { n: 'Clay Councilman', as: 'Mickey Hart', r: 'Drums · Percussion · Vocals', p: 'clay', pics: ['drummer-smile', 'two-drummers', 'drum-duo'],
+    b: 'Clay takes the Mickey Hart role: second kit, percussion and vocals. Together with Seth he brings back the two-drummer sound that powered the Dead\'s live shows, right through Drums and Space.' }
 ];
-const mem = $('#members');
-if (mem) mem.innerHTML = MEMBERS.map(([n, r, i, p]) => `<div class="m reveal">${p ? `<img class="ph" src="img/members/${p}.jpg" alt="${n.replace(/"/g,'&quot;')}" loading="lazy" width="640" height="800">` : `<div class="noph"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[i]}</svg></div>`}<b>${n}</b><span>${r}</span></div>`).join('');
-$$('.m.reveal').forEach(el => io.observe(el));
+const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const mem = $('#members'), md = $('#md');
+if (mem) {
+  mem.innerHTML = MEMBERS.map((m, i) => `<button type="button" class="m reveal" data-i="${i}" aria-haspopup="dialog"><img class="ph" src="img/members/${m.p}.jpg" alt="${esc(m.n)}" loading="lazy" width="640" height="800"><b>${esc(m.n)}</b><em>as ${m.as}</em><span>${m.r}</span><i class="more">Read More</i></button>`).join('');
+  $$('.m.reveal').forEach(el => io.observe(el));
+}
+if (mem && md) {
+  let last = null;
+  const open = i => {
+    const m = MEMBERS[i]; last = document.activeElement;
+    $('.mdpics', md).innerHTML = m.pics.map((f, k) => `<img src="img/gallery/${f}-sm.jpg" alt="${esc(m.n)} on stage, photo ${k + 1}" loading="lazy">`).join('');
+    $('.mdtxt', md).innerHTML = `<h3 id="mdt">${esc(m.n)}</h3><em>as ${m.as}</em><span>${m.r}</span><p>${m.b}</p>`;
+    md.hidden = false; document.body.style.overflow = 'hidden'; $('.mdx', md).focus();
+  };
+  const close = () => { md.hidden = true; document.body.style.overflow = ''; if (last) last.focus(); };
+  mem.addEventListener('click', e => { const b = e.target.closest('.m'); if (b) open(+b.dataset.i); });
+  $('.mdx', md).addEventListener('click', close);
+  md.addEventListener('click', e => { if (e.target === md) close(); });
+  addEventListener('keydown', e => { if (!md.hidden && e.key === 'Escape') close(); });
+}
 
 /* ---------- setlists (from setlist.fm) ---------- */
 const SETS = [
