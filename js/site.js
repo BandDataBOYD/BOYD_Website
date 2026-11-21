@@ -10,6 +10,8 @@ const SOCIAL = [
   ['TikTok', 'https://www.tiktok.com/@officialbringoutyerdead', '<path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.7V9.5a6.3 6.3 0 1 0 5.4 6.2V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9l-1-.2z"/>'],
   ['YouTube', 'https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q', '<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/>']
 ];
+const BLURB = { Facebook: 'Show dates, photos and the BOYD community', Instagram: 'Photos and stories from the road', TikTok: 'Short clips from the stage', YouTube: 'Full songs and jams' };
+$$('[data-social-big]').forEach(el => el.innerHTML = SOCIAL.map(([n, u, p]) => `<a class="${n === 'Facebook' ? 'fb' : ''}" href="${u}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true">${p}</svg><span><b>${n === 'Facebook' ? 'Join Us On Facebook' : n}</b><small>${BLURB[n]}</small></span></a>`).join(''));
 $$('[data-social]').forEach(el => el.innerHTML = SOCIAL.map(([n, u, p]) => `<a href="${u}" aria-label="${n}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24">${p}</svg></a>`).join(''));
 const yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
 
