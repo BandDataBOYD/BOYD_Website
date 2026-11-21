@@ -187,14 +187,14 @@ if (pg && lb) {
   lb.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); x0 = null; });
 }
 
-/* ---------- forms (Netlify Forms when hosted) ---------- */
-$$('form[data-netlify]').forEach(f => f.addEventListener('submit', async e => {
+/* ---------- forms (Cloudflare Pages Functions -> Brevo) ---------- */
+$$('form[data-ajax]').forEach(f => f.addEventListener('submit', async e => {
   e.preventDefault();
   const msg = f.parentElement.querySelector('.msg') || f.querySelector('.msg');
   const btn = f.querySelector('[type=submit]');
   btn.disabled = true;
   try {
-    const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() });
+    const r = await fetch(f.getAttribute('action'), { method: 'POST', body: new FormData(f) });
     if (!r.ok) throw 0;
     f.reset();
     msg.textContent = f.name === 'mailing-list' ? "You're on the list. See you at the show." : 'Thanks — we got your message.';
