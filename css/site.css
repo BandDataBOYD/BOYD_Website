@@ -64,6 +64,7 @@ p{margin:0 0 1em;max-width:66ch}
 .fallback p{color:var(--mute)}
 
 /* about */
+.about .lede{color:var(--ink);font:500 clamp(19px,2.2vw,22px)/1.45 Inter,sans-serif;margin:18px 0 20px;padding-left:16px;border-left:3px solid var(--red)}
 .about .grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
 .about figure{margin:0;position:relative}
 .about figure img{border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%;height:auto}
