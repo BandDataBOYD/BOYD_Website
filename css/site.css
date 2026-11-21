@@ -201,3 +201,4 @@ button.m{font:inherit;color:inherit;text-align:left;cursor:pointer;width:100%}
 .fol a.fb svg{width:36px;height:36px;color:#8fb0ff}.fol a.fb b{font-size:19px}.fol a.fb small{color:#c9d6ff;font-size:14px}
 .fol a.fb:hover{border-color:#8fb0ff}
 @media(max-width:760px){.fol{grid-template-columns:minmax(0,1fr)}.fol a.fb{grid-column:auto}}
+.book h2{margin-bottom:24px}
