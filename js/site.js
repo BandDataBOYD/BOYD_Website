@@ -75,7 +75,7 @@ const ICON = {
 const MEMBERS = [
   ['Kirk Farmer', 'Guitar · Vocals', 'guitar', 'kirk'], ['Jonas Mac', 'Guitar · Vocals', 'guitar', 'jonas'],
   ['Chris "CJ" Johnson', 'Keyboards · Vocals', 'keys', 'cj'], ['Cris Perez', 'Bass', 'bass', 'cris'],
-  ['Clay Councilman', 'Drums · Vocals', 'drums'], ['Seth Blanchard', 'Drums', 'drums']
+  ['Clay Councilman', 'Drums · Vocals', 'drums', 'clay'], ['Seth Blanchard', 'Drums', 'drums', 'seth']
 ];
 const mem = $('#members');
 if (mem) mem.innerHTML = MEMBERS.map(([n, r, i, p]) => `<div class="m reveal">${p ? `<img class="ph" src="img/members/${p}.jpg" alt="${n.replace(/"/g,'&quot;')}" loading="lazy" width="640" height="800">` : `<div class="noph"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[i]}</svg></div>`}<b>${n}</b><span>${r}</span></div>`).join('');
