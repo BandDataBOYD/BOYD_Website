@@ -73,12 +73,12 @@ const ICON = {
   drums: '<ellipse cx="12" cy="9" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 9v7c0 1.7 3.6 3 8 3s8-1.3 8-3V9M3 2l7 6M21 2l-7 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'
 };
 const MEMBERS = [
-  ['Kirk Farmer', 'Guitar · Vocals', 'guitar'], ['Jonas Mac', 'Guitar · Vocals', 'guitar'],
-  ['Chris "CJ" Johnson', 'Keyboards · Vocals', 'keys'], ['Cris Perez', 'Bass', 'bass'],
+  ['Kirk Farmer', 'Guitar · Vocals', 'guitar', 'kirk'], ['Jonas Mac', 'Guitar · Vocals', 'guitar', 'jonas'],
+  ['Chris "CJ" Johnson', 'Keyboards · Vocals', 'keys', 'cj'], ['Cris Perez', 'Bass', 'bass', 'cris'],
   ['Clay Councilman', 'Drums · Vocals', 'drums'], ['Seth Blanchard', 'Drums', 'drums']
 ];
 const mem = $('#members');
-if (mem) mem.innerHTML = MEMBERS.map(([n, r, i]) => `<div class="m reveal"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[i]}</svg><b>${n}</b><span>${r}</span></div>`).join('');
+if (mem) mem.innerHTML = MEMBERS.map(([n, r, i, p]) => `<div class="m reveal">${p ? `<img class="ph" src="img/members/${p}.jpg" alt="${n.replace(/"/g,'&quot;')}" loading="lazy" width="640" height="800">` : `<div class="noph"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[i]}</svg></div>`}<b>${n}</b><span>${r}</span></div>`).join('');
 $$('.m.reveal').forEach(el => io.observe(el));
 
 /* ---------- setlists (from setlist.fm) ---------- */
@@ -110,15 +110,56 @@ if (vid) vid.addEventListener('click', e => {
   vid.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=${vid.dataset.list}&autoplay=1" title="Bring Out Yer Dead videos" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
 });
 
-/* ---------- lightbox ---------- */
-const lb = $('#lb');
-if (lb) {
-  const close = () => lb.classList.remove('on');
-  $$('#gallery button').forEach(b => b.addEventListener('click', () => { $('img', lb).src = b.dataset.src; $('img', lb).alt = $('img', b).alt; lb.classList.add('on'); $('button', lb).focus(); }));
-  lb.addEventListener('click', e => { if (e.target !== $('img', lb)) close(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-}
 
+/* ---------- photo gallery + lightbox ---------- */
+const PHOTOS = [
+  ['banner-wide', '', 'The full band under the Bring Out Yer Dead banner'],
+  ['psych-room', '', 'The whole band on stage with psychedelic projections covering the room'],
+  ['kirk-bw', '', 'Kirk Farmer smiling mid-song, black and white'],
+  ['foh-crowd', '', 'A packed floor seen from the sound booth'],
+  ['jonas-smile', '', 'Jonas Mac grinning at the mic'],
+  ['from-drums', '', 'The view from behind the drums out to a full theater'],
+  ['cj-floral', '', 'CJ Johnson at his keyboards with his stuffed-animal crew'],
+  ['two-drummers', '', 'Both drummers at work, side by side'],
+  ['hands-logo', '', 'Fans with fists up in front of the band and its logo backdrop'],
+  ['kirk-sing', '', 'Kirk Farmer singing with his eyes closed'],
+  ['crowd-wide', '', 'A packed room watching the band under blue light'],
+  ['banner-laugh', '', 'The band cracking up mid-show in red light'],
+  ['drummer-smile', '', 'Drummer grinning behind his kit'],
+  ['cris-green', '', 'Cris Perez on his five-string under green light'],
+  ['theater-wide', '', 'The full band on a theater stage under a psychedelic screen'],
+  ['jonas-kirk', '', 'Jonas and Kirk trading vocals'],
+  ['drums-sweater', '', 'Drummer in a Steal Your Face sweater'],
+  ['skull-screen', '', 'The band under a giant skull projection'],
+  ['drum-duo', '', 'Both drummers out front for the drums segment'],
+  ['balcony-crowd', '', 'A full theater floor seen from the balcony'],
+  ['cris-white', '', 'Cris Perez on bass under red stage lights'],
+  ['cj-crowd-2', '', 'CJ and Kirk facing a packed theater'],
+  ['jonas-sing', '', 'Jonas Mac singing at the mic'],
+  ['stage-green', '', 'The front line from stage left under green beams'],
+  ['kirk-tiger', '', 'Kirk Farmer playing his Tiger guitar'],
+  ['crowd-front', '', 'Fans dancing at the front of the stage'],
+  ['bass-lights', '', 'Cris Perez on bass under stage lights'],
+  ['greenroom', '', 'The band hanging out in the green room before a show']
+];
+const pg = $('#pgrid'), lb = $('#lb');
+if (pg && lb) {
+  pg.innerHTML = PHOTOS.map(([f, c, a], i) => `<button type="button" data-i="${i}" aria-label="View photo: ${a}"><img src="img/gallery/${f}-sm.jpg" alt="${a}" loading="lazy"></button>`).join('');
+  const img = $('img', lb), cap = $('.lbc', lb);
+  let cur = 0, last = null;
+  const show = i => { cur = (i + PHOTOS.length) % PHOTOS.length; const [f, , a] = PHOTOS[cur]; img.src = `img/gallery/${f}.jpg`; img.alt = a; cap.textContent = `${cur + 1} / ${PHOTOS.length}`; };
+  const open = i => { last = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; $('.lbx', lb).focus(); };
+  const close = () => { lb.hidden = true; document.body.style.overflow = ''; if (last) last.focus(); };
+  pg.addEventListener('click', e => { const b = e.target.closest('button'); if (b) open(+b.dataset.i); });
+  $('.lbx', lb).addEventListener('click', close);
+  $('.lbp', lb).addEventListener('click', () => show(cur - 1));
+  $('.lbn', lb).addEventListener('click', () => show(cur + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  addEventListener('keydown', e => { if (lb.hidden) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+  let x0 = null;
+  lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+}
 
 /* ---------- forms (Netlify Forms when hosted) ---------- */
 $$('form[data-netlify]').forEach(f => f.addEventListener('submit', async e => {
