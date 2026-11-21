@@ -48,6 +48,12 @@ td:first-child{font-variant-numeric:tabular-nums;color:var(--gold);width:3.5em}
 .vplay{position:relative;width:88px;height:88px;border-radius:50%;background:var(--red);display:grid;place-items:center;box-shadow:0 0 0 10px rgba(216,48,58,.25)}
 .vlabel{position:absolute;left:24px;bottom:20px;font:600 20px Fraunces,serif;font-variation-settings:"SOFT" 100}
 .vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#evid{background:#000}#evid::before{display:none}
+.vlist{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.vlist button{text-align:left;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;cursor:pointer;min-height:56px}
+.vlist button[aria-pressed=true]{border-color:var(--red);background:#2a1620}
+.vlist b{display:block;font-size:15px}.vlist small{display:block;color:var(--mute);font-size:13px}
+@media(max-width:760px){.vlist{grid-template-columns:1fr 1fr}}
 .mon{display:flex;gap:22px;align-items:center;background:#16263f;border:1px solid var(--blue);border-radius:18px;padding:clamp(20px,3vw,32px);margin-bottom:clamp(32px,5vw,56px)}
 .mon svg{width:56px;height:56px;flex:none;color:#8fb0ff}
 .mon h3{font-size:clamp(24px,3vw,32px)}.mon p{margin:8px 0 0;font-size:18px;max-width:70ch}
@@ -125,11 +131,8 @@ td:first-child{width:4.5em}
   <div class="wrap">
     <h2>Live Video</h2>
     <p class="lede">Full songs and jams, straight from the stage. More on our <a href="https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q" target="_blank" rel="noopener">YouTube channel</a>.</p>
-    <a class="vframe" id="evid" href="https://www.youtube.com/channel/UCQ5zhto_H1IK1-C3n1uaO1Q" target="_blank" rel="noopener" data-list="UUQ5zhto_H1IK1-C3n1uaO1Q" aria-label="Play live videos">
-      <span class="vplay"><svg viewBox="0 0 24 24" width="38" height="38" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>
-      <span class="vlabel">Watch Bring Out Yer Dead Live</span>
-    </a>
-  </div>
+    <div class="vframe" id="evid"><iframe id="eframe" src="https://www.youtube.com/embed/5vBxQ3w7bKU?rel=0" title="Bring Out Yer Dead live video" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+    <div class="vlist" id="vlist"></div>  </div>
 </section>
 
 <section class="band sets" id="photos">
@@ -189,7 +192,10 @@ const INPUTS = [[1,'SR Kick'],[2,'SR Snare'],['3–8','Reserved: SR drum mics (h
 document.getElementById('inputs').innerHTML = INPUTS.map(([c,s,r]) => `<tr${r ? ' class="res"' : ''}><td>${c}</td><td>${s}</td></tr>`).join('');
 const PP = [['banner-wide','Full band under the banner'],['marquee','Theater marquee'],['psych-room','Full stage with projections'],['theater-wide','Theater stage, wide'],['crowd-wide','Packed room'],['foh-crowd','Crowd from the sound booth'],['balcony-crowd','Theater from the balcony'],['hands-logo','Fans at the front'],['kirk-bw','Kirk Farmer'],['jonas-smile','Jonas Mac'],['cj-floral','CJ Johnson'],['cris-green','Cris Perez'],['drums-sweater','Seth Blanchard'],['drummer-smile','Clay Councilman'],['drum-duo','Both drummers']];
 document.getElementById('pressPhotos').innerHTML = PP.map(([f,t]) => `<figure><img src="../img/gallery/${f}-sm.jpg" alt="${t}" loading="lazy"><figcaption>${t}<a href="../img/gallery/${f}.jpg" download>Download</a></figcaption></figure>`).join('') + `<figure><img src="../img/logo.png" alt="Band logo" loading="lazy" style="object-fit:contain;background:#000;padding:16px"><figcaption>Logo (PNG, transparent)<a href="../img/logo.png" download>Download</a></figcaption></figure>`;
-const ev = document.getElementById('evid');
+const VIDS = [['5vBxQ3w7bKU','Cumberland Blues','The Jefferson Theater, Charlottesville VA'],['NnqmR7CLDEc','Brokedown Palace','The Jefferson Theater, Charlottesville VA'],['jpgaVDJ36sU','Full Set 2',"Cat's Cradle, Carrboro NC"],['B0iDDfoE5Sk','Full Set 2','Lincoln Theatre, Raleigh NC']];
+const vl = document.getElementById('vlist'), fr = document.getElementById('eframe');
+vl.innerHTML = VIDS.map(([id,t,v],i) => `<button type="button" data-id="${id}" aria-pressed="${i===0}"><b>${t}</b><small>${v}</small></button>`).join('');
+vl.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; fr.src = `https://www.youtube.com/embed/${b.dataset.id}?rel=0&autoplay=1`; vl.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); });
 ev.addEventListener('click', e => { if (window.self !== window.top) return; e.preventDefault(); ev.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=${ev.dataset.list}&autoplay=1" title="Bring Out Yer Dead live video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; });
 const b = document.getElementById('copyBio'), m = document.getElementById('copyMsg');
 b.addEventListener('click', async () => {
