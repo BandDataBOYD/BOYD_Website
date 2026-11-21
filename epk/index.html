@@ -195,7 +195,7 @@ document.getElementById('pressPhotos').innerHTML = PP.map(([f,t]) => `<figure><i
 const VIDS = [['5vBxQ3w7bKU','Cumberland Blues','The Jefferson Theater, Charlottesville VA'],['NnqmR7CLDEc','Brokedown Palace','The Jefferson Theater, Charlottesville VA'],['jpgaVDJ36sU','Full Set 2',"Cat's Cradle, Carrboro NC"],['B0iDDfoE5Sk','Full Set 2','Lincoln Theatre, Raleigh NC']];
 const vl = document.getElementById('vlist'), fr = document.getElementById('eframe');
 vl.innerHTML = VIDS.map(([id,t,v],i) => `<button type="button" data-id="${id}" aria-pressed="${i===0}"><b>${t}</b><small>${v}</small></button>`).join('');
-vl.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; fr.src = `https://www.youtube.com/embed/${b.dataset.id}?rel=0&autoplay=1`; vl.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); });
+vl.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; fr.src = `https://www.youtube.com/embed/${b.dataset.id}?rel=0`; vl.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); });
 ev.addEventListener('click', e => { if (window.self !== window.top) return; e.preventDefault(); ev.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=${ev.dataset.list}&autoplay=1" title="Bring Out Yer Dead live video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; });
 const b = document.getElementById('copyBio'), m = document.getElementById('copyMsg');
 b.addEventListener('click', async () => {
