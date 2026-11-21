@@ -65,11 +65,6 @@ if (cv) {
   $('#oilBtn').addEventListener('click', () => { pal = (pal + 1) % PALETTES.length; t += 20; frame(); });
 }
 
-/* ---------- venue marquee ---------- */
-const ROOMS = ['Lincoln Theatre · Raleigh', 'The Jefferson Theater · Charlottesville', "Cat's Cradle · Carrboro", 'Lenovo Center South Plaza · Raleigh', 'Parkway Brewing · Salem, VA', 'Bowstring Pizza & Brewyard · Raleigh', 'Bond Brothers Eastside · Cary'];
-const rooms = $('#rooms');
-if (rooms) rooms.innerHTML = (reduce ? ROOMS : ROOMS.concat(ROOMS)).map(r => `<span>${r}</span>`).join('');
-
 /* ---------- members ---------- */
 const ICON = {
   guitar: '<path d="M19 3l2 2-5.5 5.5M14 9l1 1M9.5 11.5a3.5 3.5 0 0 0-4.9 0c-1.6 1.6-.6 3.5-2.1 5-1 1 2 4 3 3 1.5-1.5 3.4-.5 5-2.1a3.5 3.5 0 0 0 0-4.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.5" cy="15.5" r="1.3" fill="currentColor"/>',
