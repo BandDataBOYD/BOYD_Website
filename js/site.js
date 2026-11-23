@@ -76,22 +76,22 @@ const ICON = {
 };
 const MEMBERS = [
   { n: 'Kirk Farmer', as: 'Jerry Garcia', r: 'Lead Guitar · Vocals', p: 'kirk', pics: ['kirk-sing', 'kirk-tiger', 'kirk-smile'],
-    b: 'Kirk takes the Jerry chair: lead guitar and the Garcia vocals. He plays a replica of Jerry\'s Tiger guitar through a Garcia-style rig, going after the touch and tone that made those leads sing.' },
+    b: 'Kirk plays Jerry\'s parts: the lead guitar and the Jerry songs. He plays a replica of Jerry\'s Tiger through a Garcia-style rig, chasing the tone and touch that made those leads sing, from a sweet Stella Blue to a Morning Dew that takes the roof off.' },
   { n: 'Jonas Mac', as: 'Bob Weir', r: 'Rhythm Guitar · Vocals', p: 'jonas', pics: ['jonas-sing', 'jonas-sg', 'jonas-bw'],
-    b: 'Jonas plays the Bob Weir role: the rhythm guitar, the cowboy songs and the rockers. Weir\'s unconventional voicings are what make the Dead\'s two-guitar conversation work, and Jonas brings that same push and pull to every jam.' },
+    b: 'Jonas covers Bobby\'s side of the stage: rhythm guitar, the cowboy songs and the rockers. Bobby\'s odd, beautiful chord shapes are what make the two guitars talk to each other, and Jonas brings that same back-and-forth to every jam.' },
   { n: 'Chris "CJ" Johnson', as: 'The Keyboard Chair', r: 'Keyboards · Vocals', p: 'cj', pics: ['cj-sing', 'cj-floral', 'cj-keys'],
-    b: 'CJ covers the Dead\'s keyboard history in one seat: Keith Godchaux\'s piano, Brent Mydland\'s organ and vocals, and the Bruce Hornsby years. He also travels with a parrot, two sloths and a tie-dye bear, who ride on his keyboards every night and are the only members of the band who have never missed a cue.' },
+    b: 'CJ covers every era of Dead keys in one spot: Keith\'s piano, Brent\'s organ and vocals, and the Hornsby years. He also travels with a parrot, two sloths and a tie-dye bear, who ride on his keyboards every night and are the only members of the band who have never missed a cue.' },
   { n: 'Cris Perez', as: 'Phil Lesh', r: 'Bass', p: 'cris', pics: ['cris-green', 'cris-white', 'bass-lights'],
-    b: 'Cris holds down the Phil Lesh role, playing bass the way Phil did: as a lead voice instead of just the bottom end. Big, melodic lines that steer the jams wherever they want to go.' },
+    b: 'Cris plays bass the way Phil did: as a lead voice instead of just the bottom end. Big, melodic lines that steer the jams wherever they want to go.' },
   { n: 'Seth Blanchard', as: 'Bill Kreutzmann', r: 'Drums', p: 'seth', pics: ['drums-sweater', 'seth-hat', 'drum-duo'],
-    b: 'Seth plays the Bill Kreutzmann side of the drum riser: the steady, swinging groove the whole band leans on, from the tightest shuffle to the longest jam.' },
+    b: 'Seth plays Billy\'s side of the drum riser: the steady, swinging groove the whole band leans on, from the tightest shuffle to the longest jam.' },
   { n: 'Clay Councilman', as: 'Mickey Hart', r: 'Drums · Percussion · Vocals', p: 'clay', pics: ['drummer-smile', 'two-drummers', 'seth-outdoor'],
-    b: 'Clay takes the Mickey Hart role: second kit, percussion and vocals. Together with Seth he brings back the two-drummer sound that powered the Dead\'s live shows, right through Drums and Space. As a bonus, Clay also sings, adding a fourth voice to the harmonies.' }
+    b: 'Clay plays Mickey\'s side: second kit and percussion. With Seth, he brings back the Rhythm Devils, the two-drummer sound that powered the Dead live, right through Drums and Space. As a bonus, Clay also sings, adding a fourth voice to the harmonies.' }
 ];
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const mem = $('#members'), md = $('#md');
 if (mem) {
-  mem.innerHTML = MEMBERS.map((m, i) => `<button type="button" class="m reveal" data-i="${i}" aria-haspopup="dialog"><img class="ph" src="img/members/${m.p}.jpg" alt="${esc(m.n)}" loading="lazy" width="640" height="800"><b>${esc(m.n)}</b><em>as ${m.as}</em><span>${m.r}</span><i class="more">Read More</i></button>`).join('');
+  mem.innerHTML = MEMBERS.map((m, i) => `<button type="button" class="m reveal" data-i="${i}" aria-haspopup="dialog"><img class="ph" src="img/members/${m.p}.jpg" alt="${esc(m.n)}" loading="lazy" width="640" height="800"><b>${esc(m.n)}</b><span>${m.r}</span><i class="more">Read More</i></button>`).join('');
   $$('.m.reveal').forEach(el => io.observe(el));
 }
 if (mem && md) {
@@ -99,7 +99,7 @@ if (mem && md) {
   const open = i => {
     const m = MEMBERS[i]; last = document.activeElement;
     $('.mdpics', md).innerHTML = m.pics.map((f, k) => `<img src="img/gallery/${f}-sm.jpg" alt="${esc(m.n)} on stage, photo ${k + 1}" loading="lazy">`).join('');
-    $('.mdtxt', md).innerHTML = `<h3 id="mdt">${esc(m.n)}</h3><em>as ${m.as}</em><span>${m.r}</span><p>${m.b}</p>`;
+    $('.mdtxt', md).innerHTML = `<h3 id="mdt">${esc(m.n)}</h3><span>${m.r}</span><p>${m.b}</p>`;
     md.hidden = false; document.body.style.overflow = 'hidden'; $('.mdx', md).focus();
   };
   const close = () => { md.hidden = true; document.body.style.overflow = ''; if (last) last.focus(); };
