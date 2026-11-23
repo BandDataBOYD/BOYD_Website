@@ -76,17 +76,17 @@ const ICON = {
 };
 const MEMBERS = [
   { n: 'Kirk Farmer', as: 'Jerry Garcia', r: 'Lead Guitar · Vocals', p: 'kirk', pics: ['kirk-sing', 'kirk-tiger', 'kirk-smile'],
-    b: 'Kirk plays Jerry\'s parts: the lead guitar and the Jerry songs. He plays a replica of Jerry\'s Tiger through a Garcia-style rig, chasing the tone and touch that made those leads sing, from a sweet Stella Blue to a Morning Dew that takes the roof off.' },
+    b: 'Kirk handles Jerry\'s parts, singing lead on the Jerry tunes and taking the guitar solos. He plays a replica of Jerry\'s Tiger through a Garcia-style rig, chasing the warm, singing tone that made those leads so recognizable. Whether it\'s a quiet Stella Blue or a Morning Dew that builds until it takes the roof off, he\'s after the feel of the music, not just the notes.' },
   { n: 'Jonas Mac', as: 'Bob Weir', r: 'Rhythm Guitar · Vocals', p: 'jonas', pics: ['jonas-sing', 'jonas-sg', 'jonas-bw'],
-    b: 'Jonas covers Bobby\'s side of the stage: rhythm guitar, the cowboy songs and the rockers. Bobby\'s odd, beautiful chord shapes are what make the two guitars talk to each other, and Jonas brings that same back-and-forth to every jam.' },
+    b: 'Jonas holds down Bobby\'s side of the stage, playing rhythm guitar and singing the cowboy songs and the rockers. Bobby never played rhythm like anyone else, with chord shapes that weave around Jerry\'s lines instead of just backing them up. Jonas plays it the same way, and that conversation between the two guitars is a big part of what makes a jam feel like the Dead.' },
   { n: 'Chris "CJ" Johnson', as: 'The Keyboard Chair', r: 'Keyboards · Vocals', p: 'cj', pics: ['cj-sing', 'cj-floral', 'cj-keys'],
-    b: 'CJ covers every era of Dead keys in one spot: Keith\'s piano, Brent\'s organ and vocals, and the Hornsby years. He also travels with a parrot, two sloths and a tie-dye bear, who ride on his keyboards every night and are the only members of the band who have never missed a cue.' },
+    b: 'CJ covers every era of the Dead\'s keyboards from one spot on the stage. That means Keith\'s rolling piano from the seventies, Brent\'s Hammond organ and soulful vocals from the eighties, and the Bruce Hornsby years too. He also travels with a parrot, two sloths and a tie-dye bear, who ride on his keyboards every night and are the only members of the band who have never missed a cue.' },
   { n: 'Cris Perez', as: 'Phil Lesh', r: 'Bass', p: 'cris', pics: ['cris-green', 'cris-white', 'bass-lights'],
-    b: 'Cris plays bass the way Phil did: as a lead voice instead of just the bottom end. Big, melodic lines that steer the jams wherever they want to go.' },
+    b: 'Cris plays bass the way Phil did, as a lead voice in the band rather than just the bottom end. His lines are big and melodic, and they steer the jams as much as they follow them. When the band heads somewhere unexpected, there\'s a good chance Cris was the one who pointed the way.' },
   { n: 'Seth Blanchard', as: 'Bill Kreutzmann', r: 'Drums', p: 'seth', pics: ['drums-sweater', 'seth-hat', 'drum-duo'],
-    b: 'Seth plays Billy\'s side of the drum riser: the steady, swinging groove the whole band leans on, from the tightest shuffle to the longest jam.' },
+    b: 'Seth plays Billy\'s side of the drum riser. Billy was the anchor of the Dead\'s sound, and Seth brings that same steady, swinging groove the whole band leans on. Whether it\'s a tight shuffle or a jam that stretches past twenty minutes, Seth keeps it moving and keeps it feeling good.' },
   { n: 'Clay Councilman', as: 'Mickey Hart', r: 'Drums · Percussion · Vocals', p: 'clay', pics: ['drummer-smile', 'two-drummers', 'seth-outdoor'],
-    b: 'Clay plays Mickey\'s side: second kit and percussion. With Seth, he brings back the Rhythm Devils, the two-drummer sound that powered the Dead live, right through Drums and Space. As a bonus, Clay also sings, adding a fourth voice to the harmonies.' }
+    b: 'Clay plays Mickey\'s side, on a second kit surrounded by percussion. Together, he and Seth bring back the Rhythm Devils, the two-drummer engine that drove the Dead\'s live shows, right through Drums and Space. Clay also sings, which gives the band a fourth voice in the harmonies.' }
 ];
 const esc = s => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const mem = $('#members'), md = $('#md');
