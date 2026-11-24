@@ -120,7 +120,13 @@ The builder walks through the set, and at each slot it scores the candidates:
   4. Parallel major/minor, or a whole step apart.
   5. Anything else.
   Segue joins require tier 1–3. Stop transitions use the tiers only as a preference.
-- **Variety:** penalize the same type/feel tag back to back, and penalize it heavily three in a row. Also avoid stacking the same lead singer more than three songs in a row.
+- **Variety:** penalize the same type/feel tag back to back, and penalize it heavily three in a row.
+- **Singer rotation (proportional):** this applies only when the band has more than one lead singer. Each singer's share comes from the songs eligible for this build. Songs with several singers, or the whole band singing, count as neutral. The builder spreads each singer's songs evenly through the set in proportion to that share. The longest run one singer can take before it's penalized is about their share divided by everyone else's share, rounded up:
+  - One singer: no limit, since they sing everything.
+  - Two singers with equal shares: alternate one and one.
+  - Three or more equal singers: rotate, with no singer taking two in a row where it can be avoided.
+  - Lopsided, e.g. 20 songs to 4: the main singer can run about 5 in a row. The second singer's songs are spaced out through the set instead of bunched together, roughly one every five or six songs.
+  Rotation is a soft preference, weighted below the arc and the chord relationships. It never forces a bad transition just to switch singers.
 - **Length fit:** the total, with gaps, has to land within tolerance.
 
 These are scored together across the whole set, so one great pairing can't wreck the rest of the arc. The builder chooses the algorithm (beam search or similar) and the weights.
