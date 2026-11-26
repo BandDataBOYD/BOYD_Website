@@ -19,7 +19,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
     const r = await fetch('https://api.setlist.fm/rest/1.0/search/setlists?artistName=' + encodeURIComponent(ARTIST) + '&p=' + p, {
       headers: { 'x-api-key': env.SETLISTFM_API_KEY, accept: 'application/json' }
     });
-    if (!r.ok) { if (p === 1) return json({ ok: false, error: 'setlistfm' }, 502); break; }
+    if (!r.ok) { if (p === 1) return json({ ok: false, error: 'setlistfm', status: r.status }, 502); break; }
     const data = await r.json();
     const list = data.setlist || [];
     for (const x of list) {
