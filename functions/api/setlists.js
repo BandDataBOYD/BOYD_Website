@@ -1,5 +1,5 @@
 // Recent setlists: pulls the band's latest setlists from setlist.fm and caches them for 6 hours.
-// Needs a Cloudflare secret named SETLISTFM_API_KEY (set in the Pages project settings).
+// Needs a Cloudflare secret named SETLISTFM_API_KEY (or SETLISTFM_API_KEY_2) (set in the Pages project settings).
 // Until the key is set, or if setlist.fm is down, this returns an error and the page
 // falls back to the setlists built into js/site.js.
 const ARTIST = 'Bring Out Yer Dead';
@@ -8,7 +8,8 @@ const TTL = 6 * 3600;   // seconds to cache
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export async function onRequestGet({ request, env, waitUntil }) {
-  if (!env.SETLISTFM_API_KEY) return json({ ok: false, error: 'not-configured' }, 503);
+  const KEY = env.SETLISTFM_API_KEY || env.SETLISTFM_API_KEY_2;
+  if (!KEY) return json({ ok: false, error: 'not-configured' }, 503);
   const cache = caches.default;
   const key = new Request(new URL('/api/setlists', request.url).toString());
   const hit = await cache.match(key);
@@ -17,7 +18,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
   const sets = [];
   for (let p = 1; p <= 2 && sets.length < MAX; p++) {
     const r = await fetch('https://api.setlist.fm/rest/1.0/search/setlists?artistName=' + encodeURIComponent(ARTIST) + '&p=' + p, {
-      headers: { 'x-api-key': env.SETLISTFM_API_KEY, accept: 'application/json' }
+      headers: { 'x-api-key': KEY, accept: 'application/json' }
     });
     if (!r.ok) { if (p === 1) return json({ ok: false, error: 'setlistfm', status: r.status }, 502); break; }
     const data = await r.json();
