@@ -110,7 +110,7 @@ if (mem && md) {
 }
 
 /* ---------- setlists (from setlist.fm) ---------- */
-const SETS = [
+let SETS = [
   { d: 'Oct 16, 2026', v: 'Lincoln Theatre', c: 'Raleigh, NC', part: true, s: ['Greatest Story Ever Told', 'Black-Throated Wind', 'Walk in the Sunshine', 'Playing in the Band', 'Looks Like Rain', 'Mexicali Blues', 'One More Saturday Night', 'Cassidy', 'Mississippi Half-Step Uptown Toodeloo', 'Box of Rain', 'Scarlet Begonias', 'Fire on the Mountain'] },
   { d: 'Aug 22, 2026', v: 'The Jefferson Theater', c: 'Charlottesville, VA', s: ['Deal', 'My Brother Esau', 'Hell in a Bucket', 'China Cat Sunflower', 'I Know You Rider', 'Playing in the Band', 'Wharf Rat', 'Terrapin Station', 'One More Saturday Night'] },
   { d: 'Oct 4, 2025', v: 'Parkway Brewing', c: 'Salem, VA', part: true, s: ['Bertha', 'Tennessee Jed', 'Mama Tried', 'Dire Wolf', 'Looks Like Rain', 'Deal', 'Mr. Charlie', 'Deep Elem Blues', 'Box of Rain', 'Mississippi Half-Step Uptown Toodeloo', 'Me and Bobby McGee', 'Luckenbach, Texas'] },
@@ -120,14 +120,22 @@ const SETS = [
 ];
 const picker = $('#picker'), card = $('#card');
 if (picker) {
-  picker.innerHTML = SETS.map((x, i) => `<button type="button" role="tab" id="set${i}" aria-selected="${i === 0}" data-i="${i}">${x.v}<small>${x.d} · ${x.c}</small></button>`).join('');
+  const FM = 'https://www.setlist.fm/setlists/bring-out-yer-dead-73efc609.html';
   const show = i => {
     const x = SETS[i];
     $$('button', picker).forEach(b => b.setAttribute('aria-selected', b.dataset.i == i));
-    card.innerHTML = `<h3>${x.v}</h3><div class="where">${x.c} · ${x.d}</div><ol>${x.s.map(s => `<li>${s}</li>`).join('')}</ol><p class="src">${x.part ? 'Partial list. ' : ''}Setlist via <a href="https://www.setlist.fm/setlists/bring-out-yer-dead-73efc609.html" target="_blank" rel="noopener">setlist.fm</a></p>`;
+    card.innerHTML = `<h3>${esc(x.v)}</h3><div class="where">${esc(x.c)} · ${esc(x.d)}</div><ol>${x.s.map(s => `<li>${esc(s)}</li>`).join('')}</ol><p class="src">${x.part ? 'Partial list. ' : ''}Setlist via <a href="${esc(x.u || FM)}" target="_blank" rel="noopener">setlist.fm</a></p>`;
+  };
+  const draw = () => {
+    picker.innerHTML = SETS.map((x, i) => `<button type="button" role="tab" id="set${i}" aria-selected="${i === 0}" data-i="${i}">${esc(x.v)}<small>${esc(x.d)} · ${esc(x.c)}</small></button>`).join('');
+    show(0);
   };
   picker.addEventListener('click', e => { const b = e.target.closest('button'); if (b) show(+b.dataset.i); });
-  show(0);
+  draw();
+  /* live list from setlist.fm (refreshed every 6 hours); the list above is the fallback */
+  fetch('/api/setlists').then(r => r.ok ? r.json() : null).then(j => {
+    if (j && j.ok && Array.isArray(j.sets) && j.sets.length) { SETS = j.sets; draw(); }
+  }).catch(() => {});
 }
 
 /* ---------- video: embed when hosted, link out when framed ---------- */
